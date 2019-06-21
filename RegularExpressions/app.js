@@ -80,6 +80,80 @@ re = /gre?a?y/i;// '?' means optional. Means in given word there can be or not c
 //Escape characters - to escape literals like \ or ? or "" etc
 re = /gre?a?y\?/i; // Prints Grey? keeping ? a literal and not optional metachar.
 
+// Brackets [] - Brackets are basically Character Sets
+
+re = /gr[ae]y/i; // [ae] means, character at this place has to be either a or e, its quite similar to ?.
+//But how brackets are different than ? is, ? is optional means no character is also allowed as its optional, but with brackets a character is must.
+
+//Carat symbol ^ with Brackets
+re = /^[GF]ray/i; // Must begin with a G or F
+re = /[^GF]ray/i; // Match anything except a G or F
+
+//To allow any upper case character
+re = /[A-Z]ray/i; // Match any upper case letter between A to Z.
+
+//To allow any lower case character
+re = /[a-z]ray/i; // Match any lower case letter between a to z.
+
+//To allow both upper and lower case characters
+re = /[A-Za-z]ray/i; // Match any case letter between A/a to Z/z.
+
+//Number ranges
+re = /[0-9]ray/i; // Match any digit. will match 1ray or 9ray or 5ray or 0ray
+
+//So these brackets are for single character or digit, it we need it for multiple characters, we have to repeat it
+
+re = /[0-9][0-9]ray/; // For matching 10ray
+
+// To tackel this, we use quantifiers which are braces - {}
+re = /Hel{2}o/i; // This matches 2 l's exactly at this place. Not more not less.
+
+// We can add a range, say if except 2 to 4 ls, then
+re = /Hel{2,4}o/i;
+
+// We can add a range, say if l should occur at least 2 times, then
+re = /Hel{2,}o/i;
+
+//Paranthesis () - Used for grouping
+
+//I want a number follwed by x 3 times
+re = /^([0-9]x){3}$/; // Matches 3x3x3x
+
+//Shorthand character classes
+
+// '\w' matches any alphanumeric or _ character at first index
+re = /\w/; // Word character - it can be any alphanumeric character or _ (underscore).
+
+// '\w+' matches any alphanumeric or _ characters one or more
+re = /\w+/;
+
+//For non-word characters use uppercase W
+re = /\W/; // Anything but a letter or number or underscore.
+
+re = /\d/; // Maches any digit only 1
+
+re = /\d+/; // Maches any digit 0 or more times.
+
+re = /\D/; // Maches any non-digit.
+
+//Whitespace character
+re = /\s/; // Maches white space.
+
+//Non-Whitespace character
+re = /\S/; // Maches non white space.
+
+//Word boundary
+re = /Hell\b/i; // Maches complete word by using biundary flag 'b'
+
+//Assertions
+re = /x(?=y)/; // Going to match x if only it is followed by y.
+
+re = /x(?!y)/; // Going to match x if only it is not followed by y.
+
+
+
+
+
 //String to match
 const str = 'Hello World';
 
